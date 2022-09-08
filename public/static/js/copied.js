@@ -1,0 +1,1 @@
+var toCopy=document.getElementById("to-copy"),btnCopy=document.getElementById("copy");btnCopy.addEventListener("click",(function(){return toCopy.select(),document.execCommand("copy")?(btnCopy.classList.add("copied"),alert("Success Copy Link To Clipboard"),setTimeout((function(){btnCopy.classList.remove("copied")}),2e3)):console.info("document.execCommand went wrong…"),!1}));

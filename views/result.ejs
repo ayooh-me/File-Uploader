@@ -1,0 +1,108 @@
+<!doctype HTML>
+<html>
+<head>
+<%- include('comp/_head.ejs', { title: result.originalname }) %>
+</head>
+<body>
+    <div id="overlay">
+        <div class="cv-spinner">
+          <span class="spinner"></span>
+        </div>
+      </div>
+<div id="tsparticles"></div>
+<div class="container" id="container">
+<div class="page-header">
+<div class="col-md-12">
+<h1 style="color: #ffffffe1;" class="animated infinite pulse pulse2"> File Zone </h1>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(event) {
+    $('ul.nav.nav-tabs a:first').tab('show'); // Select first tab
+    $('ul.nav.nav-tabs a[href="'+ window.location.hash+ '"]').tab('show'); // Select tab by name if provided in location hash
+    $('ul.nav.nav-tabs a[data-toggle="tab"]').on('shown', function (event) {    // Update the location hash to current tab
+        window.location.hash= event.target.hash;
+    })
+});
+	</script>
+<div class="row">
+<div class="col-md-3 col-xs-0"></div>
+<div class="col-md-6 col-xs-12">
+<div class="panel panel-primary">
+<div class="panel-heading">Result File</div>
+<div class="tabbable tabs-top panel-body">
+<ul class="nav nav-tabs" data-tabs="tab">
+<li><a data-toggle="tab">File</a></li>
+</ul>
+<div class="tab-content" style="margin-top: 15px">
+<div class="tab-pane active" id="upload">
+<form>
+<div class="form-group">
+<label>URL: </label><input type="text" id="to-copy" class="form-control text-secondary" value="<%= result.url %>" readonly="readonly">
+</div>
+<div class="form-group">
+<label>Name: </label><input type="text" class="form-control text-secondary" value="<%= result.originalname %>" readonly="readonly">
+</div>
+<div class="form-group">
+<label>Size: </label><input type="text" class="form-control text-secondary" value="<%= result.filesize %>" readonly="readonly">
+</div>
+<% if (["jpg", "png", "webp", "gif"].includes(result.ext)) { %>
+<div class="form-group">
+    <label>Preview: </label>
+</br>
+    <img src="<%= result.url_file %>" class="thumb" alt="<%= result.originalname %>">
+
+    </div>
+    <% } %>
+    <% if (["mp3", "ogg", "wav"].includes(result.ext) && result.mimetype.split('/')[0] == "audio"
+    ) { %>
+        <div class="form-group">
+            <label>Preview: </label>
+        </br>
+    <audio controls preload="auto"><source src="<%= result.url_file %>"></source></audio>
+            </div>
+            <% } %>
+            <% if (["mp4", "webm", "ogg"].includes(result.ext) && result.mimetype.split('/')[0] == "video"
+            ) { %>
+                <div class="form-group">
+                    <label>Preview: </label>
+                </br>
+                    <video controls autoplay class="thumb" controlsList="nodownload">
+                        <source src="<%= result.url_file %>" type="<%= result.mimetype %>">
+                    </video>
+                    </div>
+                    <% } %>
+<div class="form-group">
+</div>
+</form>
+<button style="margin-top: 1rem" id="copy" class="btn btn-primary">Copy Link</button>
+<a style="margin-top: 1rem" href="<%= result.url_file %>?download" class="btn btn-primary">Download File</a>
+</br>
+<a style="margin-top: 1rem" href="/" class="btn btn-primary">Upload Another File</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-12 text-center" style="margin-top: 50px">
+<p><a href="https://caliph.my.id" style="color: #ffffffff;">2022 Made by Caliph</a>
+</p>
+</div>
+</div>
+<script src="/static/js/copied.js"></script>
+<script src="/static/js/audioplayer.js"></script>
+		<script>
+			$(function() {
+				$('audio').audioPlayer();
+			});
+		</script>
+        <script>
+ $("#overlay").fadeIn(500);
+  $(document).ready(function() {
+    $("#overlay").delay(500).fadeOut(500);
+  })
+        </script>
+<%- include('comp/particles.ejs') %>
+</body>
+</html>

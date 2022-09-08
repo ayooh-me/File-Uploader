@@ -1,0 +1,1 @@
+tsParticles.load("tsparticles",{fpsLimit:60,background:{color:"#0b032d"},backgroundMode:{enable:!0},particles:{color:{value:["#f67e7d","#843b62","#621940"]},links:{color:"#ffb997",enable:!0},move:{enable:!0,speed:1.5},size:{value:5,random:{enable:!0,minimumValue:1},animation:{enable:!0,speed:2.5,minimumValue:1}},opacity:{value:.8,random:{enable:!0,minimumValue:.4}}}});
