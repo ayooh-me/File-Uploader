@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caliphdev/filezone"
+    "url": "git+https://github.com/veanyxz/filezone"
   },
   "keywords": [],
   "author": "caliphdev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/caliphdev/filezone"
+    "url": "https://github.com/veanyxz/filezone"
   },
   "homepage": "https://github.com/caliphdev/filezone",
   "dependencies": {
